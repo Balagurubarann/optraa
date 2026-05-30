@@ -319,25 +319,25 @@
     </div>
     <div class="contact-grid">
       <div class="contact-form-wrap" data-aos="fade-right">
-        <form class="contact-form" id="contactForm">
+        <form class="contact-form" id="contactForm" onsubmit="return handleFormSubmit(event)">
           <div class="form-row">
             <div class="form-group">
               <label>Contact Person *</label>
-              <input type="text" placeholder="Your full name" required />
+              <input type="text" class="contact-person-name" placeholder="Your full name" required />
             </div>
             <div class="form-group">
-              <label>Designation</label>
-              <input type="text" placeholder="Principal / Director" />
+              <label>Designation *</label>
+              <input type="text" class="role" placeholder="Principal / Director" required />
             </div>
           </div>
           <div class="form-row">
             <div class="form-group">
               <label>Institution Name *</label>
-              <input type="text" placeholder="School or College name" required />
+              <input type="text" class="institution-name" placeholder="School or College name" required />
             </div>
             <div class="form-group">
               <label>Institution Type *</label>
-              <select required>
+              <select class="inst_type" required>
                 <option value="">Select type…</option>
                 <option>School (K-12)</option>
                 <option>Junior College</option>
@@ -350,21 +350,55 @@
           <div class="form-row">
             <div class="form-group">
               <label>Mobile Number *</label>
-              <input type="tel" placeholder="+91 XXXXX XXXXX" required />
+              <input type="tel" class="phone" placeholder="+91 XXXXX XXXXX" required />
             </div>
             <div class="form-group">
               <label>Email Address *</label>
-              <input type="email" placeholder="admin@yourinstitution.com" required />
+              <input type="email" class="email" placeholder="admin@yourinstitution.com" required />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Institution Address *</label>
+              <input type="text" class="address" placeholder="Street, Area" required />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>City *</label>
+              <input type="text" class="city" placeholder="City name" required />
+            </div>
+            <div class="form-group">
+              <label>State *</label>
+              <input type="text" class="state" placeholder="State name" required />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+                <label>Pin code *</label>
+                <input type="text" class="pin" placeholder="560XXX" required />
+            </div>
+            <div class="form-group">
+              <label>Total Strength *</label>
+              <select class="strength" required>
+                <option value="">Select strength…</option>
+                <option value="below-500">Below 500</option>
+                <option value="500-1000">500-1000</option>
+                <option value="1000-2500">1000-2500</option>
+                <option value="2500-5000">2500-5000</option>
+                <option value="above-5000">Above 5000</option>
+              </select>
             </div>
           </div>
           <div class="form-group full">
             <label>Message / Requirements</label>
-            <textarea rows="4" placeholder="Tell us about your institution size, current challenges, or specific modules you're interested in…"></textarea>
+            <textarea class="message" rows="4" placeholder="Tell us about your institution size, current challenges, or specific modules you're interested in…"></textarea>
           </div>
           <button type="submit" class="btn-primary ripple-btn full-btn">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.18 2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.69a16 16 0 0 0 6 6l.94-.94a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 16z"/></svg>
             Request a Callback
           </button>
+          <p class="form-message"></p>
         </form>
       </div>
       <div class="contact-info-wrap" data-aos="fade-left">

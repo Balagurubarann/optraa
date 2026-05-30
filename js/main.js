@@ -330,3 +330,66 @@ const activeObserver = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.4 });
 sections.forEach(s => activeObserver.observe(s));
+
+// ═══════════════════════════════════════════
+// Handle Form Submission
+// ═══════════════════════════════════════════
+
+async function handleFormSubmit(event) {
+  event.preventDefault();
+
+  console.log('Form submission initiated');
+
+  const contactPersonName = document.querySelector('.contact-person-name').value.trim();
+  const role = document.querySelector('.role').value.trim();
+  const institutionName = document.querySelector('.institution-name').value.trim();
+  const instType = document.querySelector('.inst_type').value.trim();
+  const address = document.querySelector('.address').value.trim();
+  const city = document.querySelector('.city').value.trim();
+  const state = document.querySelector('.state').value.trim();
+  const pin = document.querySelector('.pin').value.trim();
+  const email = document.querySelector('.email').value.trim();
+  const phone = document.querySelector('.phone').value.trim();
+  const strength = document.querySelector('.strength').value.trim();
+  const message = document.querySelector('.message')?.value?.trim();
+  const formMessageEl = document.querySelector('.form-message');
+
+  if (!contactPersonName || !role || !institutionName || !instType || !city || !state || !email || !phone) {
+    alert('Please fill in all required fields and agree to be contacted.');
+    return;
+  }
+
+  const response = await fetch('http://localhost:3000/api/contact', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      contactPersonName,
+      role,
+      institutionName,
+      instType,
+      address,
+      city,
+      state,
+      pin,
+      email,
+      phone,
+      strength,
+      product: "OPTRAA",
+      message,
+      agree: true
+    })
+  });
+
+  const result = await response.json();
+  if (result.success) {
+    formMessageEl.style.color = '#10b981';
+    formMessageEl.textContent = result.message || 'Thank you for your interest! We will reach out to you within 24 hours.';
+    setTimeout(() => formMessageEl.textContent = '', 5000);
+    document.getElementById('contactForm').reset();
+  } else {
+    formMessageEl.style.color = '#ef4444';
+    formMessageEl.textContent = result.message || 'An error occurred while submitting your request. Please try again later.';
+    setTimeout(() => formMessageEl.textContent = '', 5000);
+  }
+
+}
