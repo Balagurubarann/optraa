@@ -43,6 +43,8 @@ body {
 
 img, svg { max-width: 100%; display: block; }
 
+i { font-size: 1.25rem; color: var(--primary); }
+
 a { text-decoration: none; color: inherit; }
 
 ul { list-style: none; }
@@ -637,10 +639,11 @@ ul { list-style: none; }
   box-shadow: 0 0 0 6px var(--primary-light);
   transition: all 0.3s;
 }
-.roadmap-item:hover .node-icon {
+.node-icon i { font-size: 1.5rem; color: var(--primary); transition: color 0.3s; }
+/* .roadmap-item:hover .node-icon {
   background: var(--primary);
   box-shadow: 0 0 0 6px rgba(22,138,160,0.2);
-}
+} */
 .roadmap-item:hover .node-icon svg { stroke: #fff; }
 .node-step {
   font-family: var(--font-head);
